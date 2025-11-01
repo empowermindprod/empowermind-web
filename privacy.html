@@ -839,58 +839,32 @@
         </p>
     </footer>
 
-    <!-- Eruda Mobile Console for debugging -->
-    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>
-        // Initialize Eruda console (тільки на мобільному)
-        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            eruda.init();
-            console.log('✅ Eruda mobile console initialized');
-        }
-    </script>
-    
-    <script>
-        console.log('🚀 Script started loading');
-        
-        // Global function accessible everywhere
+        // Global language switcher function
         window.switchLanguage = function(lang) {
-            console.log('🔵 switchLanguage called with:', lang);
-            
             try {
                 // Hide all content
                 var allContent = document.querySelectorAll('.lang-content');
-                console.log('Found content elements:', allContent.length);
-                
                 for (var i = 0; i < allContent.length; i++) {
                     allContent[i].classList.remove('active');
                 }
                 
                 // Remove active class from all buttons
                 var allButtons = document.querySelectorAll('.lang-btn');
-                console.log('Found buttons:', allButtons.length);
-                
                 for (var i = 0; i < allButtons.length; i++) {
                     allButtons[i].classList.remove('active');
                 }
                 
                 // Show selected language content
                 var contentElement = document.getElementById('content-' + lang);
-                console.log('Content element for', lang, ':', contentElement);
-                
                 if (contentElement) {
                     contentElement.classList.add('active');
-                    console.log('✅ Content switched to:', lang);
-                } else {
-                    console.error('❌ Content element not found for:', lang);
                 }
                 
                 // Add active class to the button
                 var activeBtn = document.getElementById('btn-' + lang);
                 if (activeBtn) {
                     activeBtn.classList.add('active');
-                    console.log('✅ Button activated:', lang);
-                } else {
-                    console.error('❌ Button not found for:', lang);
                 }
                 
                 // Update header subtitle and footer
@@ -904,64 +878,33 @@
                     document.documentElement.lang = 'en';
                 }
                 
-                console.log('✅ Language switch completed');
-                
             } catch(error) {
-                console.error('❌ Error switching language:', error);
+                console.error('Error switching language:', error);
             }
         };
         
-        console.log('✅ switchLanguage function defined globally');
-        
         // Add click listeners when DOM ready
         function initButtons() {
-            console.log('🔧 Initializing buttons...');
-            
             var ukBtn = document.getElementById('btn-uk');
             var enBtn = document.getElementById('btn-en');
             
-            console.log('UK button found:', !!ukBtn);
-            console.log('EN button found:', !!enBtn);
-            
             if (ukBtn) {
-                console.log('Adding click listener to UK button');
                 ukBtn.addEventListener('click', function(e) {
-                    console.log('🟢 UK button clicked via addEventListener!');
                     window.switchLanguage('uk');
                 }, false);
-            } else {
-                console.error('❌ UK button not found!');
             }
             
             if (enBtn) {
-                console.log('Adding click listener to EN button');
-                console.log('EN button text:', enBtn.textContent);
-                console.log('EN button class:', enBtn.className);
-                
                 enBtn.addEventListener('click', function(e) {
-                    console.log('🟢 EN button clicked via addEventListener!');
                     window.switchLanguage('en');
                 }, false);
-                
-                // Visual marker
-                enBtn.style.border = '2px solid red';
-                console.log('✅ EN button initialized with red border');
-            } else {
-                console.error('❌ EN button not found!');
             }
-            
-            console.log('✅ Buttons initialized');
         }
         
         // Wait for DOM
         if (document.readyState === 'loading') {
-            console.log('⏳ Waiting for DOMContentLoaded...');
-            document.addEventListener('DOMContentLoaded', function() {
-                console.log('✅ DOMContentLoaded fired');
-                initButtons();
-            });
+            document.addEventListener('DOMContentLoaded', initButtons);
         } else {
-            console.log('✅ DOM already ready');
             initButtons();
         }
     </script>
