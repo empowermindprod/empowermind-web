@@ -421,8 +421,8 @@
 <body>
     <header>
         <div class="lang-switcher">
-            <button class="lang-btn active" id="btn-uk" type="button">Українська</button>
-            <button class="lang-btn" id="btn-en" type="button">English</button>
+            <button class="lang-btn active" id="btn-uk" type="button" onclick="window.switchLanguage('uk')">Українська</button>
+            <button class="lang-btn" id="btn-en" type="button" onclick="window.switchLanguage('en')">English</button>
         </div>
         <h1>Empower Mind</h1>
         <p class="subtitle" id="header-subtitle">Умови та Положення</p>
@@ -1427,6 +1427,7 @@
             console.log('EN button found:', !!enBtn);
             
             if (ukBtn) {
+                console.log('Adding listeners to UK button:', ukBtn);
                 ukBtn.addEventListener('click', function() {
                     console.log('🟢 UK button clicked!');
                     window.switchLanguage('uk');
@@ -1436,9 +1437,16 @@
                     e.preventDefault();
                     window.switchLanguage('uk');
                 });
+            } else {
+                console.error('❌ UK button not found!');
             }
             
             if (enBtn) {
+                console.log('Adding listeners to EN button:', enBtn);
+                console.log('EN button text:', enBtn.textContent);
+                console.log('EN button class:', enBtn.className);
+                console.log('EN button style:', window.getComputedStyle(enBtn).pointerEvents);
+                
                 enBtn.addEventListener('click', function() {
                     console.log('🟢 EN button clicked!');
                     window.switchLanguage('en');
@@ -1448,6 +1456,12 @@
                     e.preventDefault();
                     window.switchLanguage('en');
                 });
+                
+                // Test if button is clickable
+                enBtn.style.border = '2px solid red';
+                console.log('EN button marked with red border for testing');
+            } else {
+                console.error('❌ EN button not found!');
             }
             
             console.log('✅ Buttons initialized');
