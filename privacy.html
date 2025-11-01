@@ -344,8 +344,8 @@
 <body>
     <header>
         <div class="lang-switcher">
-            <button class="lang-btn active" onclick="switchLanguage('uk')">Українська</button>
-            <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+            <button class="lang-btn active" data-lang="uk">Українська</button>
+            <button class="lang-btn" data-lang="en">English</button>
         </div>
         <h1>Empower Mind</h1>
         <p class="subtitle" id="header-subtitle">Політика Конфіденційності</p>
@@ -820,6 +820,8 @@
 
     <script>
         function switchLanguage(lang) {
+            console.log('Switching to language:', lang);
+            
             // Hide all content
             document.querySelectorAll('.lang-content').forEach(content => {
                 content.classList.remove('active');
@@ -831,13 +833,15 @@
             });
             
             // Show selected language content
-            document.getElementById('content-' + lang).classList.add('active');
+            const contentElement = document.getElementById('content-' + lang);
+            if (contentElement) {
+                contentElement.classList.add('active');
+            }
             
             // Add active class to the button for selected language
             const buttons = document.querySelectorAll('.lang-btn');
             buttons.forEach(btn => {
-                if ((lang === 'uk' && btn.textContent.includes('Українська')) ||
-                    (lang === 'en' && btn.textContent.includes('English'))) {
+                if (btn.getAttribute('data-lang') === lang) {
                     btn.classList.add('active');
                 }
             });
@@ -856,6 +860,25 @@
             // Smooth scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        
+        // Add event listeners when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+                
+                // Add touch event for mobile
+                btn.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+            });
+        });
     </script>
 </body>
 </html>
