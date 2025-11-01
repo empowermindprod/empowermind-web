@@ -1331,8 +1331,14 @@
             // Show selected language content
             document.getElementById('content-' + lang).classList.add('active');
             
-            // Add active class to clicked button
-            event.target.classList.add('active');
+            // Add active class to the button for selected language
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if ((lang === 'uk' && btn.textContent.includes('Українська')) ||
+                    (lang === 'en' && btn.textContent.includes('English'))) {
+                    btn.classList.add('active');
+                }
+            });
             
             // Update header subtitle and footer
             if (lang === 'uk') {
