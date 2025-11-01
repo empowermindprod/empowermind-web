@@ -33,7 +33,7 @@
 
         body {
             font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--green-dark) 0%, var(--primary-green) 40%, var(--teal) 100%);
+            background: linear-gradient(135deg, #3E7C7D 0%, #4A6FA5 50%, #6B5B95 100%);
             min-height: 100vh;
             color: var(--white);
             overflow-x: hidden;
@@ -209,31 +209,57 @@
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* CTA Button */
-        .cta-button {
-            display: inline-flex;
+        /* Store Buttons */
+        .store-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .store-btn {
+            display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
             color: var(--green-dark);
-            padding: 18px 45px;
-            border-radius: 50px;
+            padding: 18px 40px;
+            border-radius: 15px;
             text-decoration: none;
-            font-size: 1.25rem;
-            font-weight: 800;
+            font-size: 1.1rem;
+            font-weight: 700;
             transition: all 0.3s ease;
             box-shadow: 0 8px 25px rgba(232, 193, 112, 0.5);
             border: 3px solid var(--gold-light);
+            min-width: 220px;
         }
 
-        .cta-button:hover {
+        .store-btn:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 12px 35px rgba(232, 193, 112, 0.7);
             border-color: var(--gold-dark);
         }
 
-        .cta-button .emoji {
-            font-size: 1.5rem;
+        .store-btn .icon {
+            font-size: 2rem;
+        }
+
+        .store-btn .text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .store-btn .text .small {
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .store-btn .text .large {
+            font-size: 1.25rem;
+            font-weight: 800;
         }
 
         /* Feature Cards */
@@ -395,9 +421,20 @@
                 font-size: 1.15rem;
             }
 
-            .cta-button {
-                font-size: 1.1rem;
-                padding: 16px 35px;
+            .store-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .store-btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 16px 30px;
+            }
+
+            .store-btn .text .large {
+                font-size: 1.15rem;
             }
 
             .features {
@@ -461,10 +498,22 @@
                 Інтерактивне середовище для навчання, розвитку та досягнення ваших цілей. 
                 Створюйте курси, діліться досвідом, розвивайтесь разом з нами.
             </p>
-            <a href="#download" class="cta-button">
-                <span class="emoji">📱</span>
-                <span>Завантажити додаток</span>
-            </a>
+            <div class="store-buttons">
+                <a href="https://apps.apple.com/app/empowermind" class="store-btn" target="_blank" rel="noopener">
+                    <span class="icon"></span>
+                    <span class="text">
+                        <span class="small">Завантажити в</span>
+                        <span class="large">App Store</span>
+                    </span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.empowermind" class="store-btn" target="_blank" rel="noopener">
+                    <span class="icon"></span>
+                    <span class="text">
+                        <span class="small">Доступно в</span>
+                        <span class="large">Google Play</span>
+                    </span>
+                </a>
+            </div>
         </section>
 
         <!-- Features -->
@@ -513,10 +562,22 @@
                 Interactive environment for learning, development, and achieving your goals. 
                 Create courses, share experience, grow together with us.
             </p>
-            <a href="#download" class="cta-button">
-                <span class="emoji">📱</span>
-                <span>Download App</span>
-            </a>
+            <div class="store-buttons">
+                <a href="https://apps.apple.com/app/empowermind" class="store-btn" target="_blank" rel="noopener">
+                    <span class="icon"></span>
+                    <span class="text">
+                        <span class="small">Download on the</span>
+                        <span class="large">App Store</span>
+                    </span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.empowermind" class="store-btn" target="_blank" rel="noopener">
+                    <span class="icon"></span>
+                    <span class="text">
+                        <span class="small">Get it on</span>
+                        <span class="large">Google Play</span>
+                    </span>
+                </a>
+            </div>
         </section>
 
         <!-- Features -->
