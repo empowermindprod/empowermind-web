@@ -357,8 +357,8 @@
 <body>
     <header>
         <div class="lang-switcher">
-            <button class="lang-btn active" data-lang="uk" type="button">Українська</button>
-            <button class="lang-btn" data-lang="en" type="button">English</button>
+            <button class="lang-btn active" id="btn-uk" type="button">Українська</button>
+            <button class="lang-btn" id="btn-en" type="button">English</button>
         </div>
         <h1>Empower Mind</h1>
         <p class="subtitle" id="header-subtitle">Політика Конфіденційності</p>
@@ -834,40 +834,56 @@
     <!-- Eruda Mobile Console for debugging -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>
-        // Initialize Eruda console (только на мобільному)
+        // Initialize Eruda console (тільки на мобільному)
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
             eruda.init();
-            console.log('Eruda mobile console initialized');
+            console.log('✅ Eruda mobile console initialized');
         }
     </script>
     
     <script>
-        function switchLanguage(lang) {
+        console.log('🚀 Script started loading');
+        
+        // Global function accessible everywhere
+        window.switchLanguage = function(lang) {
+            console.log('🔵 switchLanguage called with:', lang);
+            
             try {
-                console.log('Switching to language:', lang);
-                
                 // Hide all content
-                document.querySelectorAll('.lang-content').forEach(function(content) {
-                    content.classList.remove('active');
-                });
+                var allContent = document.querySelectorAll('.lang-content');
+                console.log('Found content elements:', allContent.length);
+                
+                for (var i = 0; i < allContent.length; i++) {
+                    allContent[i].classList.remove('active');
+                }
                 
                 // Remove active class from all buttons
-                document.querySelectorAll('.lang-btn').forEach(function(btn) {
-                    btn.classList.remove('active');
-                });
+                var allButtons = document.querySelectorAll('.lang-btn');
+                console.log('Found buttons:', allButtons.length);
+                
+                for (var i = 0; i < allButtons.length; i++) {
+                    allButtons[i].classList.remove('active');
+                }
                 
                 // Show selected language content
                 var contentElement = document.getElementById('content-' + lang);
+                console.log('Content element for', lang, ':', contentElement);
+                
                 if (contentElement) {
                     contentElement.classList.add('active');
+                    console.log('✅ Content switched to:', lang);
+                } else {
+                    console.error('❌ Content element not found for:', lang);
                 }
                 
-                // Add active class to the button for selected language
-                document.querySelectorAll('.lang-btn').forEach(function(btn) {
-                    if (btn.getAttribute('data-lang') === lang) {
-                        btn.classList.add('active');
-                    }
-                });
+                // Add active class to the button
+                var activeBtn = document.getElementById('btn-' + lang);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                    console.log('✅ Button activated:', lang);
+                } else {
+                    console.error('❌ Button not found for:', lang);
+                }
                 
                 // Update header subtitle and footer
                 if (lang === 'uk') {
@@ -880,42 +896,62 @@
                     document.documentElement.lang = 'en';
                 }
                 
-                // Smooth scroll to top
-                try {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } catch(e) {
-                    window.scrollTo(0, 0);
-                }
-            } catch(error) {
-                console.error('Error switching language:', error);
-            }
-        }
-        
-        // Add event listeners when page loads
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
-        } else {
-            initLanguageSwitcher();
-        }
-        
-        function initLanguageSwitcher() {
-            var buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(function(btn) {
-                // Remove any existing listeners
-                var newBtn = btn.cloneNode(true);
-                btn.parentNode.replaceChild(newBtn, btn);
+                console.log('✅ Language switch completed');
                 
-                // Add single unified event handler
-                newBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    var lang = this.getAttribute('data-lang');
-                    console.log('Button clicked, lang:', lang);
-                    switchLanguage(lang);
-                    return false;
-                }, { passive: false });
-            });
+            } catch(error) {
+                console.error('❌ Error switching language:', error);
+            }
+        };
+        
+        console.log('✅ switchLanguage function defined globally');
+        
+        // Add click listeners when DOM ready
+        function initButtons() {
+            console.log('🔧 Initializing buttons...');
             
-            console.log('Language switcher initialized');
+            var ukBtn = document.getElementById('btn-uk');
+            var enBtn = document.getElementById('btn-en');
+            
+            console.log('UK button found:', !!ukBtn);
+            console.log('EN button found:', !!enBtn);
+            
+            if (ukBtn) {
+                ukBtn.addEventListener('click', function() {
+                    console.log('🟢 UK button clicked!');
+                    window.switchLanguage('uk');
+                });
+                ukBtn.addEventListener('touchstart', function(e) {
+                    console.log('📱 UK button touched!');
+                    e.preventDefault();
+                    window.switchLanguage('uk');
+                });
+            }
+            
+            if (enBtn) {
+                enBtn.addEventListener('click', function() {
+                    console.log('🟢 EN button clicked!');
+                    window.switchLanguage('en');
+                });
+                enBtn.addEventListener('touchstart', function(e) {
+                    console.log('📱 EN button touched!');
+                    e.preventDefault();
+                    window.switchLanguage('en');
+                });
+            }
+            
+            console.log('✅ Buttons initialized');
+        }
+        
+        // Wait for DOM
+        if (document.readyState === 'loading') {
+            console.log('⏳ Waiting for DOMContentLoaded...');
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('✅ DOMContentLoaded fired');
+                initButtons();
+            });
+        } else {
+            console.log('✅ DOM already ready');
+            initButtons();
         }
     </script>
 </body>
