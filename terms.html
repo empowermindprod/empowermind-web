@@ -421,8 +421,8 @@
 <body>
     <header>
         <div class="lang-switcher">
-            <button class="lang-btn active" data-lang="uk">Українська</button>
-            <button class="lang-btn" data-lang="en">English</button>
+            <button class="lang-btn active" data-lang="uk" type="button">Українська</button>
+            <button class="lang-btn" data-lang="en" type="button">English</button>
         </div>
         <h1>Empower Mind</h1>
         <p class="subtitle" id="header-subtitle">Умови та Положення</p>
@@ -1344,65 +1344,80 @@
 
     <script>
         function switchLanguage(lang) {
-            console.log('Switching to language:', lang);
-            
-            // Hide all content
-            document.querySelectorAll('.lang-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected language content
-            const contentElement = document.getElementById('content-' + lang);
-            if (contentElement) {
-                contentElement.classList.add('active');
-            }
-            
-            // Add active class to the button for selected language
-            const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => {
-                if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('active');
+            try {
+                console.log('Switching to language:', lang);
+                
+                // Hide all content
+                document.querySelectorAll('.lang-content').forEach(function(content) {
+                    content.classList.remove('active');
+                });
+                
+                // Remove active class from all buttons
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+                
+                // Show selected language content
+                var contentElement = document.getElementById('content-' + lang);
+                if (contentElement) {
+                    contentElement.classList.add('active');
                 }
-            });
-            
-            // Update header subtitle and footer
-            if (lang === 'uk') {
-                document.getElementById('header-subtitle').textContent = 'Умови та Положення';
-                document.getElementById('footer-text').textContent = 'Освітня платформа для особистісного розвитку та навчання';
-                document.documentElement.lang = 'uk';
-            } else {
-                document.getElementById('header-subtitle').textContent = 'Terms and Conditions';
-                document.getElementById('footer-text').textContent = 'Educational platform for personal development and learning';
-                document.documentElement.lang = 'en';
+                
+                // Add active class to the button for selected language
+                document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Update header subtitle and footer
+                if (lang === 'uk') {
+                    document.getElementById('header-subtitle').textContent = 'Умови та Положення';
+                    document.getElementById('footer-text').textContent = 'Освітня платформа для особистісного розвитку та навчання';
+                    document.documentElement.lang = 'uk';
+                } else {
+                    document.getElementById('header-subtitle').textContent = 'Terms and Conditions';
+                    document.getElementById('footer-text').textContent = 'Educational platform for personal development and learning';
+                    document.documentElement.lang = 'en';
+                }
+                
+                // Smooth scroll to top
+                try {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } catch(e) {
+                    window.scrollTo(0, 0);
+                }
+            } catch(error) {
+                console.error('Error switching language:', error);
             }
-            
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         // Add event listeners when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    switchLanguage(lang);
-                });
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
+        } else {
+            initLanguageSwitcher();
+        }
+        
+        function initLanguageSwitcher() {
+            var buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(function(btn) {
+                // Remove any existing listeners
+                var newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
                 
-                // Add touch event for mobile
-                btn.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
+                // Add single unified event handler
+                newBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var lang = this.getAttribute('data-lang');
+                    console.log('Button clicked, lang:', lang);
                     switchLanguage(lang);
-                });
+                    return false;
+                }, { passive: false });
             });
-        });
+            
+            console.log('Language switcher initialized');
+        }
     </script>
 </body>
 </html>
