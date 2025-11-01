@@ -18,7 +18,7 @@
 ## 🌐 Deployment
 
 Сайт розгорнуто на GitHub Pages:
-- **URL**: https://legal.empowermind.tech (або ваш custom domain)
+- **URL**: https://empowermind.tech
 
 ### Налаштування GitHub Pages:
 
@@ -26,14 +26,22 @@
 2. Source: Deploy from a branch
 3. Branch: main
 4. Root directory: / (root)
-5. Custom domain: `legal.empowermind.tech`
+5. Custom domain: `empowermind.tech`
 6. ✅ Enforce HTTPS
 
 ### DNS Configuration:
 
 Додайте CNAME запис у вашого DNS провайдера:
 ```
-legal → empowermindprod.github.io
+@ → empowermindprod.github.io (або ALIAS/ANAME)
+```
+
+Або якщо ваш DNS не підтримує ALIAS для root domain, використайте A records:
+```
+@ → 185.199.108.153
+@ → 185.199.109.153
+@ → 185.199.110.153
+@ → 185.199.111.153
 ```
 
 ## 📱 Використання
@@ -47,8 +55,8 @@ legal → empowermindprod.github.io
 
 ## 🔗 Посилання
 
-- Privacy Policy: https://legal.empowermind.tech/privacy.html
-- Terms & Conditions: https://legal.empowermind.tech/terms.html
+- Privacy Policy: https://empowermind.tech/privacy.html
+- Terms & Conditions: https://empowermind.tech/terms.html
 
 ## 📧 Контакт
 
