@@ -916,39 +916,28 @@
             console.log('EN button found:', !!enBtn);
             
             if (ukBtn) {
-                console.log('Adding listeners to UK button:', ukBtn);
-                ukBtn.addEventListener('click', function() {
-                    console.log('🟢 UK button clicked!');
+                console.log('Adding click listener to UK button');
+                ukBtn.addEventListener('click', function(e) {
+                    console.log('🟢 UK button clicked via addEventListener!');
                     window.switchLanguage('uk');
-                });
-                ukBtn.addEventListener('touchstart', function(e) {
-                    console.log('📱 UK button touched!');
-                    e.preventDefault();
-                    window.switchLanguage('uk');
-                });
+                }, false);
             } else {
                 console.error('❌ UK button not found!');
             }
             
             if (enBtn) {
-                console.log('Adding listeners to EN button:', enBtn);
+                console.log('Adding click listener to EN button');
                 console.log('EN button text:', enBtn.textContent);
                 console.log('EN button class:', enBtn.className);
-                console.log('EN button style:', window.getComputedStyle(enBtn).pointerEvents);
                 
-                enBtn.addEventListener('click', function() {
-                    console.log('🟢 EN button clicked!');
+                enBtn.addEventListener('click', function(e) {
+                    console.log('🟢 EN button clicked via addEventListener!');
                     window.switchLanguage('en');
-                });
-                enBtn.addEventListener('touchstart', function(e) {
-                    console.log('📱 EN button touched!');
-                    e.preventDefault();
-                    window.switchLanguage('en');
-                });
+                }, false);
                 
-                // Test if button is clickable
+                // Visual marker
                 enBtn.style.border = '2px solid red';
-                console.log('EN button marked with red border for testing');
+                console.log('✅ EN button initialized with red border');
             } else {
                 console.error('❌ EN button not found!');
             }
