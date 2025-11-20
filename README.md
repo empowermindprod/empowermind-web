@@ -1,6 +1,6 @@
-# Empower Mind - Legal Pages
+# Virea - Legal Pages
 
-Окремий репозиторій для юридичних сторінок (Privacy Policy та Terms & Conditions) Empower Mind мобільного додатку.
+Окремий репозиторій для юридичних сторінок (Privacy Policy та Terms & Conditions) Virea мобільного додатку.
 
 ## 📄 Файли
 
@@ -64,5 +64,5 @@ Email: empowermind.prod@gmail.com
 
 ## 📝 Ліцензія
 
-© 2025 Empower Mind. All rights reserved.
+© 2025 Virea. All rights reserved.
 
