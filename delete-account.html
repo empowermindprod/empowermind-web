@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Account Deletion instructions for Virea - Educational mobile learning platform">
+    <title>Virea - Account Deletion / Видалення облікового запису</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Elvira Flavor Color palette */
+            --primary-color: #315E54;
+            --primary-dark: #16514A;
+            --surface-color: #E6EEEC;
+            --accent-color: #A7C0BB;
+            --selected-item: #293F3A;
+            --unselected-item: #7BAAA5;
+            --text-dark: #293F3A;
+            --text-medium: #39645B;
+            --text-light: #798783;
+            --white: #FFFFFF;
+            --error-color: #B41E1E;
+            --outline: #D2D6D5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--surface-color) 0%, var(--white) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 60px 20px 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(22, 81, 74, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 1;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            color: #FFFFFF;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+            pointer-events: auto;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            position: relative;
+            z-index: 101;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--primary-color);
+            border-color: var(--white);
+        }
+
+        .content {
+            background: var(--white);
+            padding: 50px 40px;
+            margin: -20px 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        .last-updated {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: var(--surface-color);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--text-medium);
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+            color: var(--text-medium);
+        }
+
+        .highlight-box {
+            background: var(--surface-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            color: var(--white);
+            margin-top: 0;
+            border: none;
+            font-size: 1.8rem;
+        }
+
+        .contact-box p {
+            color: var(--white);
+            opacity: 0.95;
+            font-size: 1.1rem;
+        }
+
+        .contact-box a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            word-break: break-all;
+            max-width: 100%;
+        }
+
+        .contact-box a:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid var(--accent-color);
+        }
+
+        .feature-card h4 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-medium);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.15rem;
+                font-weight: 600;
+            }
+
+            .content {
+                padding: 30px 20px;
+                margin: -20px 10px 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .lang-switcher {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            header {
+                padding-top: 40px;
+            }
+
+            .app-features {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 30px 15px;
+                margin: -20px 5px 20px;
+            }
+
+            .contact-box {
+                padding: 25px 15px;
+                margin: 30px 0;
+            }
+
+            .contact-box h3 {
+                font-size: 1.5rem;
+            }
+
+            .contact-box p {
+                font-size: 1rem;
+            }
+
+            .contact-box a {
+                font-size: 1rem;
+                padding: 12px 15px;
+                word-break: break-all;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btn-uk" type="button" onclick="window.switchLanguage('uk')">Українська</button>
+            <button class="lang-btn" id="btn-en" type="button" onclick="window.switchLanguage('en')">English</button>
+        </div>
+        <h1>Virea</h1>
+        <p class="subtitle" id="header-subtitle">Видалення облікового запису</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <!-- Ukrainian Content -->
+            <div id="content-uk" class="lang-content active">
+                <div class="last-updated">
+                    <strong>Останнє оновлення:</strong> 27 листопада 2025 року
+                </div>
+
+                <h2>Як видалити обліковий запис</h2>
+                <p>
+                    Ми в <strong>Virea</strong> поважаємо ваше право на конфіденційність та контроль над вашими даними. 
+                    Якщо ви вирішили припинити використання нашого додатку, ви можете подати запит на повне видалення вашого 
+                    облікового запису та пов'язаних даних.
+                </p>
+
+                <div class="highlight-box">
+                    <h3>Спосіб 1: Видалення в додатку (Рекомендовано)</h3>
+                    <p>Найшвидший спосіб видалити обліковий запис:</p>
+                    <ol>
+                        <li>Відкрийте додаток Virea</li>
+                        <li>Перейдіть на вкладку <strong>Профіль</strong></li>
+                        <li>У списку налаштувань знайдіть та натисніть <strong>"Remove account"</strong> (Видалити акаунт)</li>
+                        <li>Підтвердіть дію</li>
+                    </ol>
+
+                    <h3 style="margin-top: 25px;">Спосіб 2: Через службу підтримки</h3>
+                    <p>Якщо ви не маєте доступу до додатку, виконайте наступні кроки:</p>
+                    <ol>
+                        <li>Надішліть нам електронного листа на адресу <strong><a href="mailto:empowermind.prod@gmail.com">empowermind.prod@gmail.com</a></strong></li>
+                        <li>Вкажіть тему листа: <strong>"Видалення облікового запису"</strong></li>
+                        <li>У тілі листа вкажіть адресу електронної пошти, на яку зареєстровано ваш обліковий запис у Virea</li>
+                    </ol>
+                </div>
+
+                <h2>Які дані будуть видалені</h2>
+                <p>Після обробки вашого запиту, ми безповоротно видалимо наступну інформацію:</p>
+                <ul>
+                    <li><strong>Особиста інформація:</strong> ваше ім'я, адреса електронної пошти, номер телефону та фото профілю.</li>
+                    <li><strong>Облікові дані:</strong> історія входів, налаштування та вподобання.</li>
+                    <li><strong>Прогрес та досягнення:</strong> всі ваші результати навчання, пройдені курси та отримані сертифікати.</li>
+                    <li><strong>Користувацький контент:</strong> коментарі, повідомлення та інші матеріали, створені вами в додатку.</li>
+                </ul>
+
+                <h2>Які дані можуть бути збережені</h2>
+                <p>У деяких випадках ми можемо зберігати певну інформацію навіть після видалення облікового запису:</p>
+                <ul>
+                    <li><strong>Юридичні зобов'язання:</strong> дані, які ми зобов'язані зберігати відповідно до чинного законодавства (наприклад, для податкової звітності).</li>
+                    <li><strong>Анонімна аналітика:</strong> знеособлені дані, які не можуть бути використані для ідентифікації вашої особи, для покращення роботи нашого сервісу.</li>
+                </ul>
+
+                <h2>Терміни виконання</h2>
+                <p>
+                    Ми обробимо ваш запит на видалення протягом <strong>30 днів</strong> з моменту отримання листа. 
+                    Ви отримаєте підтвердження на електронну пошту після завершення процедури видалення.
+                </p>
+
+                <div class="contact-box">
+                    <h3>Маєте запитання?</h3>
+                    <p>
+                        Якщо у вас виникли труднощі з процесом видалення або є додаткові запитання, 
+                        наша служба підтримки готова допомогти:
+                    </p>
+                    <a href="mailto:empowermind.prod@gmail.com">empowermind.prod@gmail.com</a>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div id="content-en" class="lang-content">
+                <div class="last-updated">
+                    <strong>Last Updated:</strong> November 27, 2025
+                </div>
+
+                <h2>How to Delete Your Account</h2>
+                <p>
+                    At <strong>Virea</strong>, we respect your privacy and right to control your data. 
+                    If you decide to stop using our app, you can request the complete deletion of your account 
+                    and associated data.
+                </p>
+
+                <div class="highlight-box">
+                    <h3>Method 1: In-App Deletion (Recommended)</h3>
+                    <p>The fastest way to delete your account:</p>
+                    <ol>
+                        <li>Open the Virea app</li>
+                        <li>Go to the <strong>Profile</strong> tab</li>
+                        <li>Find and tap on <strong>"Remove account"</strong> item in the list</li>
+                        <li>Confirm the action</li>
+                    </ol>
+
+                    <h3 style="margin-top: 25px;">Method 2: Contact Support</h3>
+                    <p>If you cannot access the app, please follow these steps:</p>
+                    <ol>
+                        <li>Send an email to <strong><a href="mailto:empowermind.prod@gmail.com">empowermind.prod@gmail.com</a></strong></li>
+                        <li>Use the subject line: <strong>"Account Deletion"</strong></li>
+                        <li>In the body of the email, please provide the email address associated with your Virea account</li>
+                    </ol>
+                </div>
+
+                <h2>Data That Will Be Deleted</h2>
+                <p>Upon processing your request, we will permanently delete the following information:</p>
+                <ul>
+                    <li><strong>Personal Information:</strong> your name, email address, phone number, and profile photo.</li>
+                    <li><strong>Account Data:</strong> login history, settings, and preferences.</li>
+                    <li><strong>Progress and Achievements:</strong> all your learning progress, completed courses, and certificates.</li>
+                    <li><strong>User Content:</strong> comments, messages, and other materials created by you in the app.</li>
+                </ul>
+
+                <h2>Data That May Be Retained</h2>
+                <p>In certain cases, we may retain specific information even after account deletion:</p>
+                <ul>
+                    <li><strong>Legal Obligations:</strong> data we are required to keep by applicable law (e.g., for tax reporting purposes).</li>
+                    <li><strong>Anonymized Analytics:</strong> de-identified data that cannot be used to identify you personally, used for service improvement.</li>
+                </ul>
+
+                <h2>Processing Time</h2>
+                <p>
+                    We will process your deletion request within <strong>30 days</strong> of receiving your email. 
+                    You will receive a confirmation email once the deletion procedure is complete.
+                </p>
+
+                <div class="contact-box">
+                    <h3>Have Questions?</h3>
+                    <p>
+                        If you have trouble with the deletion process or have additional questions, 
+                        our support team is here to help:
+                    </p>
+                    <a href="mailto:empowermind.prod@gmail.com">empowermind.prod@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Virea. All rights reserved.</p>
+        <p style="margin-top: 10px;">
+            <span id="footer-text">Освітня платформа для особистісного розвитку та навчання</span>
+        </p>
+    </footer>
+
+    <script>
+        // Global language switcher function
+        window.switchLanguage = function(lang) {
+            try {
+                // Hide all content
+                var allContent = document.querySelectorAll('.lang-content');
+                for (var i = 0; i < allContent.length; i++) {
+                    allContent[i].classList.remove('active');
+                }
+                
+                // Remove active class from all buttons
+                var allButtons = document.querySelectorAll('.lang-btn');
+                for (var i = 0; i < allButtons.length; i++) {
+                    allButtons[i].classList.remove('active');
+                }
+                
+                // Show selected language content
+                var contentElement = document.getElementById('content-' + lang);
+                if (contentElement) {
+                    contentElement.classList.add('active');
+                }
+                
+                // Add active class to the button
+                var activeBtn = document.getElementById('btn-' + lang);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+                
+                // Update header subtitle and footer
+                if (lang === 'uk') {
+                    document.getElementById('header-subtitle').textContent = 'Видалення облікового запису';
+                    document.getElementById('footer-text').textContent = 'Освітня платформа для особистісного розвитку та навчання';
+                    document.documentElement.lang = 'uk';
+                } else {
+                    document.getElementById('header-subtitle').textContent = 'Account Deletion';
+                    document.getElementById('footer-text').textContent = 'Educational platform for personal development and learning';
+                    document.documentElement.lang = 'en';
+                }
+                
+            } catch(error) {
+                console.error('Error switching language:', error);
+            }
+        };
+        
+        // Add click listeners when DOM ready
+        function initButtons() {
+            var ukBtn = document.getElementById('btn-uk');
+            var enBtn = document.getElementById('btn-en');
+            
+            if (ukBtn) {
+                ukBtn.addEventListener('click', function(e) {
+                    window.switchLanguage('uk');
+                }, false);
+            }
+            
+            if (enBtn) {
+                enBtn.addEventListener('click', function(e) {
+                    window.switchLanguage('en');
+                }, false);
+            }
+        }
+        
+        // Wait for DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initButtons);
+        } else {
+            initButtons();
+        }
+    </script>
+</body>
+</html>
