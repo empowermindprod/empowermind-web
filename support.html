@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support for Virea - Educational mobile learning platform">
+    <title>Virea - Support / Підтримка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Elvira Flavor Color palette */
+            --primary-color: #315E54;
+            --primary-dark: #16514A;
+            --surface-color: #E6EEEC;
+            --accent-color: #A7C0BB;
+            --selected-item: #293F3A;
+            --unselected-item: #7BAAA5;
+            --text-dark: #293F3A;
+            --text-medium: #39645B;
+            --text-light: #798783;
+            --white: #FFFFFF;
+            --error-color: #B41E1E;
+            --outline: #D2D6D5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--surface-color) 0%, var(--white) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 60px 20px 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(22, 81, 74, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 1;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            color: #FFFFFF;
+            text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+            pointer-events: auto;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            position: relative;
+            z-index: 101;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--primary-color);
+            border-color: var(--white);
+        }
+
+        .content {
+            background: var(--white);
+            padding: 50px 40px;
+            margin: -20px 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--text-medium);
+        }
+
+        ul {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+            color: var(--text-medium);
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            color: var(--white);
+            margin-top: 0;
+            border: none;
+            font-size: 1.8rem;
+        }
+
+        .contact-box p {
+            color: var(--white);
+            opacity: 0.95;
+            font-size: 1.1rem;
+        }
+
+        .contact-box a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            word-break: break-all;
+            max-width: 100%;
+        }
+
+        .contact-box a:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-item {
+            background: var(--surface-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .faq-item h4 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            color: var(--text-medium);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1.15rem; }
+            .content { padding: 30px 20px; margin: -20px 10px 20px; }
+            .lang-switcher { position: static; justify-content: center; margin-bottom: 20px; }
+            header { padding-top: 40px; }
+            .contact-box h3 { font-size: 1.5rem; }
+            .contact-box a { font-size: 1.1rem; padding: 12px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btn-uk" type="button" onclick="window.switchLanguage('uk')">Українська</button>
+            <button class="lang-btn" id="btn-en" type="button" onclick="window.switchLanguage('en')">English</button>
+        </div>
+        <h1>Virea</h1>
+        <p class="subtitle" id="header-subtitle">Підтримка</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <!-- Ukrainian Content -->
+            <div id="content-uk" class="lang-content active">
+                <h2>Як ми можемо допомогти?</h2>
+                <p>Ми тут, щоб допомогти вам отримати найкращий досвід користування Virea. Якщо у вас виникли питання, технічні проблеми або є пропозиції, будь ласка, зв'яжіться з нами.</p>
+
+                <div class="contact-box">
+                    <h3>📧 Зв'язатися з нами</h3>
+                    <p>Наша команда підтримки відповість вам якнайшвидше:</p>
+                    <a href="mailto:empowermind.prod@gmail.com">empowermind.prod@gmail.com</a>
+                </div>
+
+                <h2>Часті запитання (FAQ)</h2>
+                
+                <div class="faq-item">
+                    <h4>Я забув свій пароль. Як я можу його відновити?</h4>
+                    <p>Ви можете скинути свій пароль на екрані входу в додаток, натиснувши "Забули пароль?". Вам буде надіслано інструкції на електронну пошту.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Як видалити свій обліковий запис?</h4>
+                    <p>Ви можете видалити свій обліковий запис у налаштуваннях профілю в додатку або через сторінку <a href="delete-account.html" style="color: var(--primary-color);">Видалення акаунту</a>.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Я знайшов помилку в додатку. Що робити?</h4>
+                    <p>Будь ласка, надішліть нам лист на нашу електронну пошту з детальним описом проблеми та скріншотами. Це допоможе нам швидше виправити помилку.</p>
+                </div>
+            </div>
+
+            <!-- English Content -->
+            <div id="content-en" class="lang-content">
+                <h2>How can we help?</h2>
+                <p>We are here to help you get the best experience with Virea. If you have questions, technical issues, or suggestions, please contact us.</p>
+
+                <div class="contact-box">
+                    <h3>📧 Contact Us</h3>
+                    <p>Our support team will get back to you as soon as possible:</p>
+                    <a href="mailto:empowermind.prod@gmail.com">empowermind.prod@gmail.com</a>
+                </div>
+
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                
+                <div class="faq-item">
+                    <h4>I forgot my password. How can I reset it?</h4>
+                    <p>You can reset your password on the login screen by tapping "Forgot Password?". Instructions will be sent to your email.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How do I delete my account?</h4>
+                    <p>You can delete your account in the profile settings within the app or via the <a href="delete-account.html" style="color: var(--primary-color);">Delete Account</a> page.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>I found a bug in the app. What should I do?</h4>
+                    <p>Please send us an email with a detailed description of the issue and screenshots. This will help us fix the bug faster.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Virea. All rights reserved.</p>
+        <p style="margin-top: 10px;">
+            <a href="/" style="color: var(--primary-color); text-decoration: none;">Home</a> | 
+            <a href="privacy.html" style="color: var(--primary-color); text-decoration: none;">Privacy Policy</a> | 
+            <a href="terms.html" style="color: var(--primary-color); text-decoration: none;">Terms</a>
+        </p>
+    </footer>
+
+    <script>
+        // Global language switcher function
+        window.switchLanguage = function(lang) {
+            try {
+                // Hide all content
+                var allContent = document.querySelectorAll('.lang-content');
+                for (var i = 0; i < allContent.length; i++) {
+                    allContent[i].classList.remove('active');
+                }
+                
+                // Remove active class from all buttons
+                var allButtons = document.querySelectorAll('.lang-btn');
+                for (var i = 0; i < allButtons.length; i++) {
+                    allButtons[i].classList.remove('active');
+                }
+                
+                // Show selected language content
+                var contentElement = document.getElementById('content-' + lang);
+                if (contentElement) {
+                    contentElement.classList.add('active');
+                }
+                
+                // Add active class to the button
+                var activeBtn = document.getElementById('btn-' + lang);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+                
+                // Update header subtitle
+                if (lang === 'uk') {
+                    document.getElementById('header-subtitle').textContent = 'Підтримка';
+                    document.documentElement.lang = 'uk';
+                } else {
+                    document.getElementById('header-subtitle').textContent = 'Support';
+                    document.documentElement.lang = 'en';
+                }
+                
+            } catch(error) {
+                console.error('Error switching language:', error);
+            }
+        };
+        
+        // Add click listeners when DOM ready
+        function initButtons() {
+            var ukBtn = document.getElementById('btn-uk');
+            var enBtn = document.getElementById('btn-en');
+            
+            if (ukBtn) {
+                ukBtn.addEventListener('click', function(e) {
+                    window.switchLanguage('uk');
+                }, false);
+            }
+            
+            if (enBtn) {
+                enBtn.addEventListener('click', function(e) {
+                    window.switchLanguage('en');
+                }, false);
+            }
+        }
+        
+        // Wait for DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initButtons);
+        } else {
+            initButtons();
+        }
+    </script>
+</body>
+</html>
